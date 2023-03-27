@@ -24,8 +24,8 @@ describe("API tests", () => {
     //     expect(response.statusCode).toBe(200);
     // });
 
-    // it("responds with status code 200 for GET requests to /snacks/3", async () => {
-    //     const response = await request(api).get("/snacks/3");
+    // it("responds with status code 200 for GET requests to /complaint/3", async () => {
+    //     const response = await request(api).get("/complaint/3");
     //     expect(response.statusCode).toBe(200);
     // });
 
@@ -34,14 +34,11 @@ describe("API tests", () => {
     //     expect(response.statusCode).toBe(404);
     // });
 
-    // it("responds with status code 400 for POST requests to /snacks with invalid data", async () => {
+    // it("responds with status code 400 for POST requests to /complaint with invalid data", async () => {
     //     const response = await request(api)
-    //         .post("/snacks")
+    //         .post("/complaints")
     //         .send({
-    //             name: "Grapes2",
-    //             description: "Decadent if peeled",
-    //             healthy: true,
-    //             vegetarian: true,
+    // 
     //         });
     //     expect(response.statusCode).toBe(400);
     // });

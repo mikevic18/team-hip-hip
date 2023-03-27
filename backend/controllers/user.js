@@ -42,12 +42,12 @@ async function logout(req, res) {
         res.status(403).json({ error: err.message });
     }
 }
-async function deletePost(req, res) {
+async function deleteComplaint(req, res) {
     const data = req.body;
     try {
         const user = await User.getOneByUsername(data.username);
-        if (user.admin == false) throw new Error("Insufficient permissions!");
         const complaint_post = await Complaint.getOneById(data.postID);
+        if (user.admin == false || user.id != complaint_post.user_id) throw new Error("Insufficient permissions!");
         const result = await complaint_post.destroy();
         res.status(200).json(result);
     } catch (err) {
@@ -59,5 +59,5 @@ module.exports = {
     register,
     login,
     logout,
-    deletePost,
+    deletePost: deleteComplaint,
 };

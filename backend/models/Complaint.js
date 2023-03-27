@@ -31,7 +31,7 @@ class Complaint {
             "SELECT * FROM complaints ORDER BY update_date DESC;"
         );
         if (response.rows.length != 1)
-            throw new Error("Unable to locate snack.");
+            throw new Error("Unable to locate complaint.");
         return new Complaint(response.rows[0]);
     }
 
@@ -41,7 +41,7 @@ class Complaint {
             [id]
         );
         if (response.rows.length != 1)
-            throw new Error("Unable to locate snack.");
+            throw new Error("Unable to locate complaint.");
         return new Complaint(response.rows[0]);
     }
 
@@ -50,7 +50,7 @@ class Complaint {
         // const d = new Date(year,month,day,hours,minutes,seconds)
         // const update_date = d.getFullYear;
         const response = await db.query(
-            "INSERT INTO complaints (title, content, user_id) VALUES ($1, $2, $3, $4) RETURNING *;",
+            "INSERT INTO complaints (title, content, user_id) VALUES ($1, $2, $3) RETURNING *;",
             [data.title, data.content, data.user_id]
         );
 
@@ -59,12 +59,19 @@ class Complaint {
 
     async update(data) {
         const response = await db.query(
-            "UPDATE complaints SET title = $2, content = $3 WHERE content_id = $1 RETURNING content_id;",
+            "UPDATE complaints SET title = $2, content = $3 WHERE complaint_id = $1 RETURNING complaint_id;",
             [this.id, data.title, data.content]
         );
-        console.log(response.rows[0]);
-        if (response.rows.length != 1)
-            throw new Error("Unable to update votes.");
+        if (response.rows.length != 1) throw new Error("Unable to update the complaint.");
+        return new Complaint(response.rows[0]);
+    }
+
+    async updateVote(data) {
+        const response = await db.query(
+            "UPDATE complaints SET votes WHERE complaint_id = $1 RETURNING complaint_id;",
+            [this.id, data.title, data.content]
+        );
+        if (response.rows.length != 1) throw new Error("Unable to update the complaint.");
         return new Complaint(response.rows[0]);
     }
 
