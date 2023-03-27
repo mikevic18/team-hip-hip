@@ -14,6 +14,8 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
+
+
 CREATE TABLE complaints(
     complaint_id INT GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(30) UNIQUE NOT NULL,
@@ -67,6 +69,8 @@ CREATE TABLE skill_share(
     title VARCHAR(255) NOT NULL,
     content VARCHAR(255) NOT NULL,
     video_url VARCHAR(255) NOT NULL,
+    votes INT DEFAULT 0,
+    creation_date timestamp,
     PRIMARY KEY(post_id),
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
 );
