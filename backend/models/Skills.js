@@ -58,17 +58,17 @@ class Skill {
 
     async update(data) {
         const response = await db.query(
-            "UPDATE skill_share SET title = $2, content = $3, video_url = $4 WHERE content_id = $1 RETURNING content_id;",
+            "UPDATE skill_share SET title = $2, content = $3, video_url = $4 WHERE content_id = $1 RETURNING *;",
             [this.id, data.title, data.content, data.video_url]
         );
         if (response.rows.length != 1)
             throw new Error("Unable to update skill.");
-        return new Complaint(response.rows[0]);
+        return new Skill (response.rows[0]);
     }
 
     async updateVotes(data) {
         const response = await db.query(
-            "UPDATE skill_share SET votes =$1 WHERE content_id = $2 RETURNING content_id;",
+            "UPDATE skill_share SET votes =$1 WHERE content_id = $2 RETURNING *;",
             [this.votes + data.votes, this.id]
         );
         if (response.rows.length != 1)
@@ -78,10 +78,10 @@ class Skill {
 
     async destroy() {
         const response = await db.query(
-            "DELETE FROM complaints WHERE complaint_id = $1 RETURNING *;",
+            "DELETE FROM skill_share WHERE complaint_id = $1 RETURNING *;",
             [this.id]
         );
-        return new Complaint(response.rows[0]);
+        return new Skill(response.rows[0]);
     }
 }
 
