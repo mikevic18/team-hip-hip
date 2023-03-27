@@ -1,22 +1,20 @@
 const db = require("../database/connect");
 
-class Skill {
+class Post {
     constructor({
         post_id,
         user_id,
         title,
         content,
-        video_url,
-        votes,
-        creation_date
+        creation_date,
+        update_date
     }) {
         this.id = post_id;
         this.user_id = user_id;
         this.title = title;
         this.content = content;
-        this.video_url = video_url;
-        this.votes = votes;
         this.creation_date = creation_date;
+        this.update_date = update_date
     }
 
     static async getAll() {
