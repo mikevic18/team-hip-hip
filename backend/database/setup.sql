@@ -1,9 +1,5 @@
-DROP TABLE IF EXISTS complaints_post;
-DROP TABLE IF EXISTS complaints;
-DROP TABLE IF EXISTS listings;
-DROP TABLE IF EXISTS information;
-DROP TABLE IF EXISTS skill_share;
 DROP TABLE IF EXISTS token;
+DROP TABLE IF EXISTS posts CASCADE;
 DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE user_account (
@@ -14,70 +10,39 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
-
-
-CREATE TABLE complaints(
-    complaint_id INT GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE posts (
+    post_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT,
     title VARCHAR(30) UNIQUE NOT NULL,
     content VARCHAR(500),
     creation_date timestamp,
     update_date timestamp,
-    user_id INT,
-    votes INT DEFAULT 0,
-    is_approved BOOLEAN DEFAULT FALSE,
-    PRIMARY KEY(complaint_id),
+    category VARCHAR(30) NOT NULL,
+    PRIMARY KEY(post_id),
     FOREIGN KEY(user_id) REFERENCES user_account("user_id")
 );
 
-CREATE TABLE complaints_post(
-    post_id INT GENERATED ALWAYS AS IDENTITY,
-    content VARCHAR(500),
-    user_id INT NOT NULL,
-    complaint_id INT,
-    creation_date timestamp,
-    update_date timestamp,
+CREATE TABLE complaints(
     votes INT DEFAULT 0,
-    PRIMARY KEY (post_id),
-    FOREIGN KEY (complaint_id) REFERENCES complaints ("complaint_id"),
-    FOREIGN KEY (user_id) REFERENCES user_account("user_id")
-);
+    is_approved BOOLEAN DEFAULT FALSE,
+    admin_comment VARCHAR(255)
+) INHERITS (posts);
+
 
 CREATE TABLE listings (
-    item_id INT GENERATED ALWAYS AS IDENTITY,
-    user_id INT NOT NULL,
     image_url VARCHAR(255),
     price INT NOT NULL,
-    title VARCHAR(255),
-    description VARCHAR(255),
-    sold BOOLEAN DEFAULT FALSE,
-    creation_date timestamp,
-    update_date timestamp,
-    PRIMARY KEY (item_id),
-    FOREIGN KEY (user_id) REFERENCES user_account("user_id")
-);
+    sold BOOLEAN DEFAULT FALSE
+) INHERITS (posts);
 
 CREATE TABLE information (
-    post_id INT GENERATED ALWAYS AS IDENTITY,
-    user_id INT NOT NULL,
-    title VARCHAR(255),
-    content VARCHAR(1000),
-    creation_date timestamp,
-    update_date timestamp,
-    votes INT DEFAULT 0,
-    PRIMARY KEY (post_id),
-    FOREIGN KEY (user_id) REFERENCES user_account("user_id")
-);
+    votes INT DEFAULT 0
+) INHERITS (posts);
+
 CREATE TABLE skill_share(
-    post_id INT GENERATED ALWAYS AS IDENTITY,
-    user_id INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    content VARCHAR(255) NOT NULL,
     video_url VARCHAR(255) NOT NULL,
-    votes INT DEFAULT 0,
-    creation_date timestamp,
-    PRIMARY KEY(post_id),
-    FOREIGN KEY (user_id) REFERENCES user_account("user_id")
-);
+    votes INT DEFAULT 0
+) INHERITS (posts);
 
 
 CREATE TABLE token (
