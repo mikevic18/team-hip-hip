@@ -14,6 +14,8 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
+
+
 CREATE TABLE complaints(
     complaint_id INT GENERATED ALWAYS AS IDENTITY,
     title VARCHAR(30) UNIQUE NOT NULL,
