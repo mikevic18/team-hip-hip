@@ -23,7 +23,7 @@ class Complaint {
             "SELECT * FROM complaints;"
         );
         if (response.rows.length == 0) throw new Error("No Diaries have been found");
-        return response.rows.map((g) => new Diary(g));
+        return response.rows.map((g) => new Complaint(g));
     }
 
     static async getByRecent() {
@@ -32,7 +32,7 @@ class Complaint {
         );
         if (response.rows.length != 1)
             throw new Error("Unable to locate snack.");
-        return new Diary(response.rows[0]);
+        return new Complaint(response.rows[0]);
     }
 
     static async getOneById(id) {
@@ -42,7 +42,7 @@ class Complaint {
         );
         if (response.rows.length != 1)
             throw new Error("Unable to locate snack.");
-        return new Diary(response.rows[0]);
+        return new Complaint(response.rows[0]);
     }
 
     static async create(data) {
@@ -54,7 +54,7 @@ class Complaint {
             [data.title, data.content, data.user_id]
         );
 
-        return response.rows.map((w) => new Diary(w));
+        return response.rows.map((w) => new Complaint(w));
     }
 
     async update(data) {
@@ -65,15 +65,15 @@ class Complaint {
         console.log(response.rows[0]);
         if (response.rows.length != 1)
             throw new Error("Unable to update votes.");
-        return new Diary(response.rows[0]);
+        return new Complaint(response.rows[0]);
     }
 
     async destroy() {
         const response = await db.query(
-            "DELETE FROM diary WHERE diary_id = $1 RETURNING *;",
+            "DELETE FROM complaints WHERE complaint_id = $1 RETURNING *;",
             [this.id]
         );
-        return new Diary(response.rows[0]);
+        return new Complaint(response.rows[0]);
     }
 }
 
