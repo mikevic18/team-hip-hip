@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 // const indexRouter = require('./routers/index');
-// const complaintRouter = require('./routers/complaints');
+const complaintRouter = require('./routers/complaints');
 // const userRouter = require('./routers/user');
 // const informationRouter = require('./routers/information');
 // const listingRouter = require('./routers/listing');
@@ -19,5 +19,6 @@ app.use(express.json());
 // app.use('/users', userRouter);
 
 app.use('/posts', postRouter)
+app.use('/complaints', complaintRouter)
 
 module.exports = app;
