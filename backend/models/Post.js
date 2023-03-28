@@ -33,7 +33,6 @@ class Post {
         const response = await db.query(
             "SELECT * FROM posts ORDER BY creation_date DESC;"
         );
-        console.log(response)
         if (response.rows.length < 1) throw new Error("Unable to locate posts.");
         return response.rows.map((p) => new Post(p));
     }

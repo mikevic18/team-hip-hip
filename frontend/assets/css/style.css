@@ -1,7 +1,7 @@
     body {
         display: flex;
         flex-direction: row;
-        background-color: #EFB0B6 !important;
+        background-color: #a38b5d !important;
     }
     
     html,
@@ -11,7 +11,7 @@
     }
     
     #sidebar {
-        background-color: #352456;
+        background-color: #2b425d;
         min-width: 15vw;
         max-width: 15vw;
         height: 100vh;
@@ -54,7 +54,7 @@
     }
     
     .top-bar {
-        background-color: #352456;
+        background-color: black;
         height: 4rem;
         width: 100%;
     }
@@ -68,7 +68,7 @@
     
     .site-title {
         margin-top: 5vh;
-        color: #352456;
+        color: black;
     }
     
     .home-img {
@@ -96,7 +96,7 @@
     .category-text {
         font-size: 20px;
         font-weight: 600;
-        color: #352456;
+        color: black;
         width: 100%;
     }
     
