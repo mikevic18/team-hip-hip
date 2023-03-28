@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS token;
 DROP TABLE IF EXISTS posts CASCADE;
+DROP SEQUENCE IF EXISTS post_ids;
 DROP TABLE IF EXISTS user_account;
 
 CREATE TABLE user_account (
@@ -10,8 +11,10 @@ CREATE TABLE user_account (
     PRIMARY KEY (user_id)
 );
 
+CREATE SEQUENCE post_ids;
+
 CREATE TABLE posts (
-    post_id INT GENERATED ALWAYS AS IDENTITY,
+    post_id INT DEFAULT nextval('post_ids'),
     user_id INT,
     title VARCHAR(30) UNIQUE NOT NULL,
     content VARCHAR(500),
