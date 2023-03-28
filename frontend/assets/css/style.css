@@ -1,7 +1,7 @@
     body {
         display: flex;
         flex-direction: row;
-        background-color: #EFB0B6 !important;
+        background-color: #d5e8d5 !important;
     }
     
     html,
@@ -33,6 +33,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    
+    .footer-link {
+        border-top: none !important;
     }
     
     #footer-text {
