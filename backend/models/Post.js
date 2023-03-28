@@ -6,6 +6,7 @@ class Post {
         user_id,
         title,
         content,
+        votes,
         creation_date,
         update_date,
         category
@@ -14,6 +15,7 @@ class Post {
         this.user_id = user_id;
         this.title = title;
         this.content = content;
+        this.votes = votes;
         this.creation_date = creation_date;
         this.update_date = update_date;
         this.category = category
@@ -75,7 +77,7 @@ class Post {
 
     async update(data) {
         const response = await db.query(
-            "UPDATE posts SET title = $2, content = $3, WHERE post_id = $1 RETURNING *;",
+            "UPDATE posts SET title = $2, content = $3 WHERE post_id = $1 RETURNING *;",
             [this.id, data.title, data.content]
         );
         if (response.rows.length != 1)
@@ -83,15 +85,15 @@ class Post {
         return new Post(response.rows[0]);
     }
 
-    // async updateVotes(data) {
-    //     const response = await db.query(
-    //         "UPDATE skill_share SET votes =$1 WHERE post_id = $2 RETURNING *;",
-    //         [this.votes + data.votes, this.id]
-    //     );
-    //     if (response.rows.length != 1)
-    //         throw new Error("Unable to update votes.");
-    //     return new Skill(response.rows[0]);
-    // }
+    async updateVotes(data) {
+        const response = await db.query(
+            "UPDATE posts SET votes = $1 WHERE post_id = $2 RETURNING *;",
+            [this.votes + data.votes, this.id]
+        );
+        if (response.rows.length != 1)
+            throw new Error("Unable to update votes.");
+        return new Post(response.rows[0]);
+    }
 
     async destroy() {
         const response = await db.query(
