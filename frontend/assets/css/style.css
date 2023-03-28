@@ -4,6 +4,12 @@
         background-color: #EFB0B6 !important;
     }
     
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+    }
+    
     #sidebar {
         background-color: #352456;
         min-width: 15vw;
@@ -24,6 +30,16 @@
         text-decoration: none;
         font-size: 25px;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #footer-text {
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
