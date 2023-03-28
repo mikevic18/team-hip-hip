@@ -1,6 +1,13 @@
     body {
         display: flex;
         flex-direction: row;
+        background-color: #EFB0B6 !important;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        margin: 0;
     }
     
     #sidebar {
@@ -18,11 +25,21 @@
     }
     
     .sidebar a {
-        padding: 5px 5px 5px 5px;
+        padding: 25px 5px 25px 5px;
         border-top: solid 1px white;
         text-decoration: none;
         font-size: 25px;
         color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #footer-text {
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,6 +50,7 @@
         width: 100%;
         justify-content: center;
         display: flex;
+        overflow: auto !important;
     }
     
     .top-bar {
@@ -46,4 +64,86 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+    }
+    
+    .site-title {
+        margin-top: 5vh;
+        color: #352456;
+    }
+    
+    .home-img {
+        width: 100%;
+        height: 15rem;
+        border-radius: 10px;
+    }
+    
+    .site-1 {
+        margin-top: 10vh !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .site-2 {
+        margin-top: 5vh !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .category-text {
+        font-size: 20px;
+        font-weight: 600;
+        color: #352456;
+        width: 100%;
+    }
+    
+    .info-text {
+        color: #352456;
+        font-weight: 600;
+        font-size: 20px;
+        width: 100%;
+        height: 100%;
+        border: solid 1px #352456;
+        background-color: #ebebeb;
+        padding: 10px;
+    }
+    
+    .info-image {
+        width: 25%;
+        height: 25%;
+        float: right;
+        margin-top: 1rem;
+    }
+    
+    .info-box {
+        margin-top: 5rem !important;
+    }
+    
+    .complaint-text {
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+        border: solid 1px #352456;
+        background-color: #323232;
+    }
+    
+    .complaint-response {
+        color: #1EF13A !important;
+    }
+    
+    .complaint-box {
+        margin-top: 5rem !important;
+    }
+    
+    #complaint-response {
+        color: #1EF13A;
+    }
+    
+    #complaint-response-red {
+        color: #FF6B6B;
     }
