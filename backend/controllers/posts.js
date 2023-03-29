@@ -53,6 +53,26 @@ async function categoryIndexByDate(req, res) {
     }
 }
 
+async function indexByVotes(req, res) {
+    try{
+        const posts = await Post.getByVotes();
+        res.json(posts)
+    } catch(err) {
+        res.status(404).json({"error": err.message})
+    }
+}
+
+async function categoryIndexByVotes(req, res) {
+    try {
+        const category = req.params.category
+        if (categories.indexOf(category) == -1) throw new Error("Category does not exist")
+        const posts = await Post.getAllOfCategoryByVotes(category)
+        res.json(posts)
+    } catch(err) {
+        res.status(404).json({"error": err.message})
+    }
+}
+
 async function create(req, res) {
     try {
         const data = req.body;
@@ -64,23 +84,24 @@ async function create(req, res) {
     }
 }
 
-// async function update(req, res) {
-//     try {
-//         const id = parseInt(req.params.id);
-//         const complaint = await Complaint.getOneById(id);
-//         const data = req.body;
-//         if(data.votes){
-//             const result = await complaint.updateVote(data);
+async function update(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const post = await Post.getOneById(id);
+        const data = req.body;
+        let result
+        if(data.votes){
+            result = await post.updateVotes(data);
 
-//         }else{
-//             const result = await complaint.update(data);
-
-//         }
-//         res.status(200).json(result);
-//     } catch (err) {
-//         res.status(404).json({ error: err.message });
-//     }
-// }
+        }else{
+            result = await post.update(data);
+            console.log(result)
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(404).json({ "error": err.message });
+    }
+}
 
 async function destroy(req, res) {
     try {
@@ -99,6 +120,9 @@ module.exports = {
     show,
     indexByDate,
     categoryIndexByDate,
+    indexByVotes,
+    categoryIndexByVotes,
     create,
+    update,
     destroy,
 };

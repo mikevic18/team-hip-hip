@@ -177,9 +177,9 @@ body {
 .top-donations {
     margin-top: 5vh !important;
     /* display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center; */
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center; */
 }
 
 .tip-box {
