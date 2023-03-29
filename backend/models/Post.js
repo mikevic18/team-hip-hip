@@ -37,6 +37,12 @@ class Post {
         return response.rows.map((p) => new Post(p));
     }
 
+    static async getByVotes() {
+        const response = await db.query("SELECT * FROM posts ORDER BY votes DESC;");
+        if (response.rows.length < 1) throw new Error("Unable to locate posts.");
+        return response.rows.map((p) => new Post(p));
+    }
+
     static async getAllOfCategory(category) {
         const response = await db.query(
             `SELECT * FROM ${category};`
@@ -52,6 +58,14 @@ class Post {
         if (response.rows.length < 1) throw new Error(`Unable to locate ${category}.`);
         return response.rows.map((p) => new Post(p));
     }
+
+    static async getAllOfCategoryByVotes(category) {
+        const response = await db.query(
+            `SELECT * FROM ${category} ORDER BY votes DESC;`
+        );
+        if (response.rows.length < 1) throw new Error(`Unable to locate ${category}.`);
+        return response.rows.map((p) => new Post(p));
+        }
 
     static async getOneById(id) {
         const response = await db.query(
