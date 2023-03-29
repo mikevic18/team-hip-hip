@@ -13,9 +13,7 @@ async function update(req, res) {
     try {
         const id = parseInt(req.params.id);
         const complaint = await Complaint.getById(id);
-        console.log(complaint)
         const data = req.body;
-        console.log(data)
         let result;
         if(data.is_approved){
             result = await complaint.updateApproval(data);
@@ -30,4 +28,13 @@ async function update(req, res) {
     }
 }
 
-module.exports = {index, update};
+async function indexUnapproved(req, res) {
+    try {
+        const complaints = await Complaint.getUnapproved()
+        res.json(complaints)
+    } catch (err) {
+        res.status(404).json({"error": err.messageS})
+    }
+}
+
+module.exports = {index, update, indexUnapproved};

@@ -75,7 +75,7 @@ async function update(req, res) {
 
         }else{
             result = await post.update(data);
-
+            console.log(result)
         }
         res.status(200).json(result);
     } catch (err) {

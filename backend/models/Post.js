@@ -31,7 +31,7 @@ class Post {
 
     static async getByRecent() {
         const response = await db.query(
-            "SELECT * FROM posts ORDER BY creation_date DESC;"
+            "SELECT * FROM posts ORDER BY update_date DESC;"
         );
         if (response.rows.length < 1) throw new Error("Unable to locate posts.");
         return response.rows.map((p) => new Post(p));
