@@ -1,10 +1,16 @@
-const { Router } = require('express')
+const { Router } = require('express');
 
-const complaintController = require('../controllers/complaints')
+const authenticator = require("../middleware/authenticator");
 
-const complaintRouter = Router()
+const complaintsController = require('../controllers/complaints');
 
-complaintRouter.get("/", complaintController.index)
-complaintRouter.patch("/:id", complaintController.update)
+const complaintsRouter = Router();
 
-module.exports = complaintRouter
+complaintsRouter.get("/", complaintsController.index);
+// complaintsRouter.get("/top", complaintsController.getMostRecent);
+// complaintsRouter.get("/:id", complaintsController.show);
+// complaintsRouter.post("/", authenticator, complaintsController.create);
+complaintsRouter.patch("/:id", authenticator, complaintsController.update);
+// complaintsRouter.delete("/:id", authenticator, complaintsController.destroy);
+
+module.exports = complaintsRouter;
