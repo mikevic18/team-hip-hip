@@ -17,6 +17,10 @@
         height: 100vh;
     }
     
+    .active-page {
+        background-color: #937dbf !important;
+    }
+    
     .header-box {
         height: 4rem;
         justify-content: center;
