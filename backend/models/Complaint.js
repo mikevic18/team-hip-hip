@@ -32,7 +32,6 @@ class Complaint extends Post {
             "UPDATE complaints SET is_approved = $2 WHERE post_id = $1 RETURNING *;",
             [this.id, data.is_approved]
         );
-        console.log(response.rows);
         if (response.rows.length != 1)
             throw new Error("Unable to approve the complaint.");
         return new Complaint(response.rows[0]);

@@ -47,7 +47,7 @@ class Post {
 
     static async getAllOfCategoryByRecent(category) {
         const response = await db.query(
-            `SELECT * FROM ${category} ORDER BY creation_date DESC;`
+            `SELECT * FROM ${category} ORDER BY update_date DESC;`
         );
         if (response.rows.length < 1) throw new Error(`Unable to locate ${category}.`);
         return response.rows.map((p) => new Post(p));
@@ -65,22 +65,25 @@ class Post {
 
     static async create(data) {
         data.user_id = data.user_id || 1;
-        // const d = new Date(year,month,day,hours,minutes,seconds)
-        // const update_date = d.getFullYear;
+        const now = new Date()
+        const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
         const response = await db.query(
-            `INSERT INTO ${data.category} (user_id, title, content, category) VALUES ($2, $3, $4, $1) RETURNING *;`,
-            [data.category, data.user_id, data.title, data.content]
+            `INSERT INTO ${data.category} (user_id, title, content, category, creation_date, update_date) VALUES ($1, $2, $3, $4, $5, $5) RETURNING *;`,
+            [data.user_id, data.title, data.content, data.category, timestamp]
         );
         return new Post(response.rows[0]);
     }
 
     async update(data) {
+        const now = new Date();
+        const timestamp = now.toISOString().slice(0, 19).replace('T', ' ');
         const response = await db.query(
-            "UPDATE posts SET title = $2, content = $3 WHERE post_id = $1 RETURNING *;",
-            [this.id, data.title, data.content]
+            "UPDATE posts SET title = $2, content = $3, update_date = $4 WHERE post_id = $1 RETURNING *;",
+            [this.id, data.title, data.content, timestamp]
         );
-        if (response.rows.length != 1)
+        if (response.rows.length != 1) {
             throw new Error("Unable to update post.");
+        };
         return new Post(response.rows[0]);
     }
 
