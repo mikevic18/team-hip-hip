@@ -207,3 +207,39 @@ body {
 .fa-thumbs-down {
     margin-left: 5px !important;
 }
+
+#login-form {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    width: 100%;
+}
+
+.signup-prompt {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    font-size: 32px;
+}
+
+fieldset>input {
+    width: 100%;
+}
+
+.login-btn {
+    margin-top: 1vh !important;
+    color: #000000;
+    font-size: 32px;
+    border-radius: 10%;
+}
+
+.login-btn:hover {
+    background-color: #f1f463 !important;
+    color: #000000 !important;
+}
