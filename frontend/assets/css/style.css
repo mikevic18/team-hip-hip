@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: row;
-    background-color: #efb0b6 !important;
+    background-color:  #f3b638	!important;
 }
 
 html,
@@ -11,7 +11,8 @@ body {
 }
 
 #sidebar {
-    background-color: #352456;
+    background-color: #252c34;
+    
     min-width: 15vw;
     max-width: 15vw;
     height: 100vh;
@@ -55,6 +56,7 @@ body {
 
 .top-bar {
     background-color: #352456;
+    opacity:85%;
     height: 4rem;
     width: 100%;
 }

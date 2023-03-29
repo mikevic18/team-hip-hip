@@ -1,3 +1,8 @@
+let options = {
+    headers: {
+        Authorization: localStorage.getItem("token"),
+    },
+};
 function createPostElements(dataArray) {
     dataArray.forEach((dataElement) => {
         const mainDiv = document.createElement("div");
@@ -26,11 +31,6 @@ function createPostSubElements(posts) {
     });
 }
 async function loadPosts() {
-    const options = {
-        headers: {
-            Authorization: localStorage.getItem("token"),
-        },
-    };
     const complaintData = await fetch(
         "http://localhost:3000/complaint/top",
         options
@@ -43,7 +43,9 @@ async function loadPosts() {
 
     const container = document.getElementById("post-container");
 
-    complaintPost.forEach((p) => {});
+    complaintPost.forEach((p) => {
+        
+    });
 
     const informationData = await fetch(
         "http://localhost:3000/information/top",
@@ -86,10 +88,10 @@ async function submit_new() {
     const content_text = input_content.value;
     const title_content = document.getElementById("title_input_content");
     const title_text = title_content.value;
-    await fetch(`http://localhost:3000/diary/`, {
+    await fetch(`http://localhost:3000/complaints/`, {
         method: "POST",
         body: JSON.stringify({ title: title_text, content: content_text }),
-        headers: { "Content-Type": "application/json" },
+        options
     });
     window.location.reload();
 }
