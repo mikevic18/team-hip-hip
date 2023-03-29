@@ -13,25 +13,39 @@
 
 <body>
     <div class="main-container d-flex">
+        <span id="open-nav" style="background-color: #14181c;" onclick="openNav()">&#9776;</span>
         <div class="sidebar" id="sidebar">
-            <div class="header-box text-center text-white">
-                <h1 class="fs-4 header-text">Florinit</h1>
-            </div>
             <ul class="nav flex-column text-white">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="complaints.html">Complaints</a></li>
+                <li><a href="complaints.html" class="active-page">Complaints</a></li>
                 <li><a href="tips.html">Tips</a></li>
                 <li><a href="donations.html">Donations</a></li>
                 <li><a href="information.html">Information</a></li>
                 <li id="footer-text">
                     <p>[hip, hip]</p>
                 </li>
+                <li class="footer-credit">
+                    <a class="footer-link" href="https://github.com/BritishBambi" target="_blank"><i class="fa-brands fa-github"></i>- Jojo</a>
+                </li>
+                <li class="footer-credit">
+                    <a class="footer-link" href="https://github.com/rjj21" target="_blank"><i class="fa-brands fa-github"></i>- Rosie</a>
+                </li>
+                <li class="footer-credit">
+                    <a class="footer-link" href="https://github.com/mikevic18" target="_blank"><i class="fa-brands fa-github"></i>- Mihai</a>
+                </li>
             </ul>
         </div>
     </div>
-    <div class="page-content">
-        <div class="top-bar"></div>
-        <div id ="post-container" class="container">
+
+    <div id="page-content" class="page-content">
+        <div class="top-bar">
+            <div class="header-box text-center text-white">
+                <h1 class="fs-4 header-text">Florinit</h1>
+            </div>
+        </div>
+        <div class="container overflow-container">
+
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-center site-title">Complaints</h1>
@@ -75,6 +89,7 @@
             </div>
         </div>
     </div>
+    <script src="/frontend/assets/js/navScript.js"></script>
     <script src="./assets/js/index.js"></script>
 </body>
 
