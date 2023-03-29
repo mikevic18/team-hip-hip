@@ -16,7 +16,7 @@ api.use(cors());
 api.use(express.json());
 api.use('/', indexRouter);
 api.use('/posts', postsRouter);
-api.use('/complaint', complaintRouter);
+api.use('/complaints', complaintRouter);
 api.use('/users', userRouter);
 module.exports = api;
 

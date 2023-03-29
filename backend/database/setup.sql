@@ -18,6 +18,7 @@ CREATE TABLE posts (
     user_id INT,
     title VARCHAR(30) UNIQUE NOT NULL,
     content VARCHAR(500),
+    votes INT DEFAULT 0,
     creation_date timestamp,
     update_date timestamp,
     category VARCHAR(30) NOT NULL,
@@ -26,7 +27,6 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE complaints(
-    votes INT DEFAULT 0,
     is_approved BOOLEAN DEFAULT FALSE,
     admin_comment VARCHAR(255)
 ) INHERITS (posts);
@@ -34,17 +34,17 @@ CREATE TABLE complaints(
 
 CREATE TABLE listings (
     image_url VARCHAR(255),
-    price INT NOT NULL,
+    price FLOAT NOT NULL,
     sold BOOLEAN DEFAULT FALSE
 ) INHERITS (posts);
 
 CREATE TABLE information (
-    votes INT DEFAULT 0
+    image_url VARCHAR(255),
+    author VARCHAR(30)
 ) INHERITS (posts);
 
 CREATE TABLE skill_share(
-    video_url VARCHAR(255) NOT NULL,
-    votes INT DEFAULT 0
+    video_url VARCHAR(255) NOT NULL
 ) INHERITS (posts);
 
 

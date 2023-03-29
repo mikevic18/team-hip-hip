@@ -53,6 +53,26 @@ async function categoryIndexByDate(req, res) {
     }
 }
 
+async function indexByVotes(req, res) {
+    try{
+        const posts = await Post.getByVotes();
+        res.json(posts)
+    } catch(err) {
+        res.status(404).json({"error": err.message})
+    }
+}
+
+async function categoryIndexByVotes(req, res) {
+    try {
+        const category = req.params.category
+        if (categories.indexOf(category) == -1) throw new Error("Category does not exist")
+        const posts = await Post.getAllOfCategoryByVotes(category)
+        res.json(posts)
+    } catch(err) {
+        res.status(404).json({"error": err.message})
+    }
+}
+
 async function create(req, res) {
     try {
         const data = req.body;
@@ -75,7 +95,7 @@ async function update(req, res) {
 
         }else{
             result = await post.update(data);
-
+            console.log(result)
         }
         res.status(200).json(result);
     } catch (err) {
@@ -100,6 +120,8 @@ module.exports = {
     show,
     indexByDate,
     categoryIndexByDate,
+    indexByVotes,
+    categoryIndexByVotes,
     create,
     update,
     destroy,
