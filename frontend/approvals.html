@@ -15,11 +15,11 @@
         <div class="sidebar" id="sidebar">
             <ul class="nav flex-column text-white">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <li><a href="../index.html" class="active-page">Home</a></li>
-                <li><a href="../complaints.html">Complaints</a></li>
-                <li><a href="../tips.html">Tips</a></li>
-                <li><a href="../donations.html">Donations</a></li>
-                <li><a href="../information.html">Information</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="complaints.html" class="active-page">Complaints</a></li>
+                <li><a href="tips.html">Tips</a></li>
+                <li><a href="donations.html">Donations</a></li>
+                <li><a href="information.html">Information</a></li>
                 <li id="footer-text">
                     <p>[hip, hip]</p>
                 </li>
@@ -32,28 +32,22 @@
                 <h1 class="fs-4 header-text">Florinit</h1>
             </div>
         </div>
-        <div class="container">
+        <div class="container overflow-container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-center site-title">Create New Complaint</h1>
+                    <h1 class="text-center site-title">Posts Pending Approval</h1>
                 </div>
             </div>
-            <div class="row">
-                <form id="complaint-form">
-                    <fieldset>
-                        <label for="title">Title:</label>
-                        <input type="text" id="title" name="title">
-                    </fieldset>
-                    <fieldset>
-                        <label for="content">Content:</label>
-                        <textarea id="content" name="content" rows="3" cols="30"></textarea>
-                    </fieldset>
-                    <input class="submit-btn" type="submit" value="Submit">
-                </form>
-            </div>
+            <div class="row d-flex justify-content-center complaint-box">
+                <div id="complaint-8" class="col-8 complaint-text">
+                    <h3 class="text-center" id="complaint-title">I can't get around!</h3>
+                    <p id="complaint">As someone who doesn't own a car, it's really frustrating that there are so few public transportation options in Florin. It's hard to get to nearby cities or even to other parts of town without relying on expensive taxis or rideshares.
+                    </p>
+                    <button id="approve">Approve</button>
+                </div>
         </div>
     </div>
     <script src="/frontend/assets/js/navScript.js"></script>
-    <script defer src="/frontend/newPosts/newComplaint.js"></script>
+    <script src="./assets/js/approve.js"></script>
 </body>
 </html>
