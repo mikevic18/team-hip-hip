@@ -208,7 +208,7 @@ body {
     margin-left: 5px !important;
 }
 
-#login-form {
+#login-form, #complaint-form {
     margin-top: 5vh !important;
     display: flex;
     flex-direction: column;
@@ -228,18 +228,18 @@ body {
     font-size: 32px;
 }
 
-fieldset>input {
+fieldset>input, fieldset>textarea {
     width: 100%;
 }
 
-.login-btn {
+.login-btn, .submit-btn {
     margin-top: 1vh !important;
     color: #000000;
     font-size: 32px;
     border-radius: 10%;
 }
 
-.login-btn:hover {
+.login-btn:hover, .submit-btn:hover {
     background-color: #f1f463 !important;
     color: #000000 !important;
 }
