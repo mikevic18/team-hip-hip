@@ -9,6 +9,7 @@ const postsRouter = require('./routers/posts');
 // const skillRouter = require('./routers/skills');
 
 
+
 const api = express();
 
 api.use(cors());
@@ -18,3 +19,4 @@ api.use('/posts', postsRouter);
 api.use('/complaint', complaintRouter);
 api.use('/users', userRouter);
 module.exports = api;
+
