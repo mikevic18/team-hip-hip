@@ -64,23 +64,24 @@ async function create(req, res) {
     }
 }
 
-// async function update(req, res) {
-//     try {
-//         const id = parseInt(req.params.id);
-//         const complaint = await Complaint.getOneById(id);
-//         const data = req.body;
-//         if(data.votes){
-//             const result = await complaint.updateVote(data);
+async function update(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const post = await Post.getOneById(id);
+        const data = req.body;
+        let result
+        if(data.votes){
+            result = await post.updateVotes(data);
 
-//         }else{
-//             const result = await complaint.update(data);
+        }else{
+            result = await post.update(data);
 
-//         }
-//         res.status(200).json(result);
-//     } catch (err) {
-//         res.status(404).json({ error: err.message });
-//     }
-// }
+        }
+        res.status(200).json(result);
+    } catch (err) {
+        res.status(404).json({ "error": err.message });
+    }
+}
 
 async function destroy(req, res) {
     try {
@@ -100,5 +101,6 @@ module.exports = {
     indexByDate,
     categoryIndexByDate,
     create,
+    update,
     destroy,
 };

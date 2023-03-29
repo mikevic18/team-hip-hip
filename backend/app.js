@@ -1,23 +1,22 @@
 const express = require('express');
 const cors = require('cors');
-// const indexRouter = require('./routers/index');
-// const complaintRouter = require('./routers/complaints');
-// const userRouter = require('./routers/user');
+const indexRouter = require('./routers/index');
+const complaintRouter = require('./routers/complaints');
+const userRouter = require('./routers/user');
+const postsRouter = require('./routers/posts');
 // const informationRouter = require('./routers/information');
 // const listingRouter = require('./routers/listing');
 // const skillRouter = require('./routers/skills');
 
-const postRouter = require('./routers/posts')
 
 
-const app = express();
+const api = express();
 
-app.use(cors());
-app.use(express.json());
-// app.use('/', indexRouter);
-// app.use('/diary', diaryRouter);
-// app.use('/users', userRouter);
+api.use(cors());
+api.use(express.json());
+api.use('/', indexRouter);
+api.use('/posts', postsRouter);
+api.use('/complaint', complaintRouter);
+api.use('/users', userRouter);
+module.exports = api;
 
-app.use('/posts', postRouter)
-
-module.exports = app;
