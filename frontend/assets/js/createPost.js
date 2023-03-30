@@ -13,7 +13,7 @@ async function submitNewPost(){
     const title_text = title_content.value;
     await fetch(`http://localhost:3000/posts/`, {
         method: "POST",
-        body: JSON.stringify({ title: title_text||"test", content: content_text||"test", category: categories[page], user_id:1}),
+        body: JSON.stringify({ title: title_text||"test", content: content_text||"test", category: categories[page]}),
         options
     });
     window.location.reload();
