@@ -14,24 +14,58 @@ async function setCurrentUser() {
     currentUser = await currentUser.json();
     currentUser = currentUser.user_id;
 }
-
-setCurrentUser();
-
 async function deletePost(event) {
     const div = event.target.parentNode;
     console.log(div);
     const divId = div.id;
     const elementType = divId.split("-");
     const type = elementType[0];
-    console.log(type);
-    const response = await fetch(`http://localhost:3000/${type}/${elementType[1]}`, {
+    const idOfType = elementType[1];
+    const response = await fetch(`http://localhost:3000/${type}/${idOfType}`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        options
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        },
     });
     if (response.status != 200) console.log("Error:" + response.status);
     alert("Post has been deleted");
     window.location.assign("http://localhost:5500/frontend/index.html");
+}
+
+async function submitChanges(event) {
+    const div = event.target.parentNode;
+    const divId = div.id;
+    const elementType = divId.split("-");
+    const type = elementType[0];
+    const idOfType = elementType[1];
+    let title_text;
+    let title_content;
+    if (elementType[0] == "complaints") {
+        title_content = div.querySelector("#complaint-title-field");
+        title_text = title_content.value;
+    }
+    const input_content = div.querySelector("#complaint-content-field");
+    const content_text = input_content.value;
+    let response = await fetch(`http://localhost:3000/${type}/${idOfType}`, {
+        method: "PATCH",
+        headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            title: title_text,
+            content: content_text,
+            [type == "complaints" ? "complaint_id" : "post_id"]: idOfType,
+        }),
+    });
+    if (response.statusCode === 200) {
+        alert("Success");
+    } else {
+        console.log(response.status);
+        alert();
+    }
+
+    window.location.reload();
 }
 
 async function handleFetchError(response) {
@@ -88,23 +122,51 @@ function createEditFields(event) {
     document.getElementById(divId).innerHTML += `
     <button id="submit">Submit</button>`;
     edit(div);
-    document.getElementById("submit").addEventListener("click", submit_new);
+    let editButton = div.querySelector("#submit");
+    editButton.setAttribute("onclick", "submitChanges(event)");
 }
 
-async function submit_new() {
-    const input_content = document.getElementById("input_content");
+function createReplyFields(event) {
+    const div = event.target.parentNode;
+    const divId = div.id;
+    div.querySelector("#reply").style.display = "none";
+    document.getElementById(divId).innerHTML += `
+    <button id="submit">Submit</button>`;
+    const input_content = document.createElement("input");
+    input_content.type = "text";
+    input_content.id = "reply-content-field";
+    div.appendChild(input_content);
+    let replyButton = div.querySelector("#submit");
+    replyButton.setAttribute("onclick", "submitReply(event)");
+}
+async function submitReply(event){
+    const div = event.target.parentNode;
+    const divId = div.id;
+    const elementType = divId.split("-");
+    const input_content = div.querySelector("#reply-content-field");
     const content_text = input_content.value;
-    const title_content = document.getElementById("title_input_content");
-    const title_text = title_content.value;
-    await fetch(`http://localhost:3000/complaints/`, {
+    let response = await fetch(`http://localhost:3000/post`, {
         method: "POST",
-        body: JSON.stringify({ title: title_text, content: content_text }),
-        options,
+        headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            title: '',
+            content: content_text,
+            complaint_id:elementType[1],
+            category:"complaints"
+        }),
     });
+    if (response.statusCode === 200) {
+        alert("Success");
+    } else {
+        console.log(response.status);
+        alert();
+    }
+
     window.location.reload();
 }
-
-
 function createComplaintElement(complaint) {
     const mainDiv = document.createElement("div");
     mainDiv.classList.add(
@@ -126,14 +188,14 @@ function createComplaintElement(complaint) {
     const complaintText = document.createElement("p");
     complaintText.setAttribute("id", "complaint-text");
     complaintText.innerHTML = complaint.content;
-    
+
     secondDiv.appendChild(headerOfComplaint);
     secondDiv.appendChild(complaintText);
     secondDiv.setAttribute("id", `complaints-${complaint.complaint_id}`);
 
     mainDiv.appendChild(secondDiv);
-    
-    createEditDeleteButtons(complaint,mainDiv);
+
+    createEditDeleteButtons(complaint, mainDiv);
     return mainDiv;
 }
 
@@ -151,7 +213,7 @@ async function createPostElement(post) {
 
     masterDiv.appendChild(nameParagraph);
     masterDiv.appendChild(responseParagraph);
-    masterDiv.setAttribute("id", `post-${post.id}`)
+    masterDiv.setAttribute("id", `post-${post.id}`);
     createEditDeleteButtons(post, masterDiv);
 
     return masterDiv;
@@ -177,8 +239,17 @@ function createEditDeleteButtons(post, masterDiv) {
     masterDiv.appendChild(editButton);
     masterDiv.appendChild(deleteButton);
 }
+async function createReplyButton(masterDiv) {
+    if(!currentUser) return;
+    const replyButton = document.createElement("button");
+    replyButton.setAttribute("onclick", "createReplyFields(event)");
+    replyButton.setAttribute("id", "reply");
+    replyButton.textContent = "Reply";
+    masterDiv.appendChild(replyButton);
 
+}
 async function renderComplaints() {
+    await setCurrentUser();
     const options = { method: "GET" };
     const complaintPosts = await fetchComplaints(options);
     if (!complaintPosts) return;
@@ -191,6 +262,7 @@ async function renderComplaints() {
             superDiv.appendChild(element);
         });
         mainContainer.appendChild(superDiv);
+        await createReplyButton(superDiv)
     });
 }
 renderComplaints();
