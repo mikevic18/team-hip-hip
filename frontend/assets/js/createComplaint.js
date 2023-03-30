@@ -7,7 +7,8 @@ document.getElementById("new-main-post-form").addEventListener("submit", async (
         method: "POST",
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem("token")
         },
         body: JSON.stringify({
             title: form.get("title"),

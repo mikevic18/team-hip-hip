@@ -264,3 +264,32 @@ fieldset > textarea {
     background-color: black;
     padding: 20px;
 }
+
+
+.accounts-block {
+    background-color: cyan;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    float: right;
+}
+
+.login-link, .signup-link, .logout-link {
+    background-color: gray;
+    height: 1.5rem;
+    width: 8rem;
+    margin: 5px;
+}
+
+.accounts {
+    border: 3px solid yellow;
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+}
+
+.account-links {
+    margin-top: 2rem;
+    border: 2px solid pink;
+}
