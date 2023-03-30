@@ -28,6 +28,16 @@ class User {
         return new User(response.rows[0]);
     }
 
+    static async checkIfAdmin(id) {
+        const response = await db.query(
+            "SELECT admin FROM user_account WHERE user_id = $1",
+            [id]
+        );
+    
+        if (response.rows[0].admin == false || response.rows.length != 1)
+            return false;
+        return true;
+    }
     static async getOneByUsername(username) {
         const response = await db.query(
             "SELECT * FROM user_account WHERE username = $1",

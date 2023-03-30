@@ -1,5 +1,5 @@
 const Post = require("../models/Post");
-
+const User = require("../models/User");
 const categories = ["complaints", "listings", "information", "skill_share"]
 
 async function index(req, res) {
@@ -89,6 +89,7 @@ async function categoryIndexByVotes(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
+        console.log(data)
         if (categories.indexOf(data.category) == -1) throw new Error("Category does not exist")
         const post = await Post.create(data);
         res.json(post);
@@ -120,6 +121,9 @@ async function destroy(req, res) {
     try {
         const id = parseInt(req.params.id);
         const post = await Post.getOneById(id);
+        const isAdmin = await User.checkIfAdmin(req.body.user_id)
+        console.log(isAdmin)
+        if(!isAdmin && post.user_id !== req.body.user_id) throw new Error("Not authorized");
         const result = await post.destroy();
         res.json(result);
     } catch (err) {

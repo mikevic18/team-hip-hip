@@ -80,7 +80,13 @@ class Post {
             throw new Error("Unable to locate post.");
         return new Post(response.rows[0]);
     }
-
+    static async destroyAllComplaintPosts(id){
+        const response = await db.query(
+            "DELETE FROM posts WHERE complaint_id = $1;",
+            [id]
+        );
+        return true;
+    }
     static async getPostsByComplaintID(id) {
         const response = await db.query(
             "SELECT * FROM posts WHERE complaint_id = $1;",

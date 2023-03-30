@@ -25,7 +25,6 @@ class Complaint {
     }
 
     static async create(data) {
-        // data.user_id = data.user_id || 1;
         const now = new Date();
         const timestamp = now.toISOString().slice(0, 19).replace("T", " ");
         const response = await db.query(
@@ -38,7 +37,7 @@ class Complaint {
         const now = new Date();
         const timestamp = now.toISOString().slice(0, 19).replace("T", " ");
         const response = await db.query(
-            "UPDATE complaints SET is_approved = $2, update_date = $3 WHERE post_id = $1 RETURNING *;",
+            "UPDATE complaints SET is_approved = $2, update_date = $3 WHERE complaint_id = $1 RETURNING *;",
             [this.complaint_id, data.is_approved, timestamp]
         );
         if (response.rows.length != 1)
@@ -52,14 +51,23 @@ class Complaint {
         const now = new Date();
         const timestamp = now.toISOString().slice(0, 19).replace("T", " ");
         const response = await db.query(
-            "UPDATE complaints SET admin_comment = $2, update_date = $3 WHERE post_id = $1 RETURNING *;",
-            [this.complaint_id, data.admin_comment, timestamp]
+            "UPDATE complaints SET votes = $2, update_date = $3 WHERE post_id = $1 RETURNING *;",
+            [this.complaint_id, data.votes, timestamp]
         );
         if (response.rows.length != 1)
             throw new Error("Unable to update comment on the complaint.");
         return new Complaint(response.rows[0]);
     }
 
+    async vote(data){
+        const response = await db.query(
+            "UPDATE complaints SET votes = $1 WHERE complaint_id = $2 RETURNING *;",
+            [this.votes + data.votes, this.id]
+        );
+        if (response.rows.length != 1)
+            throw new Error("Unable to update votes.");
+        return new Complaint(response.rows[0]);
+    }
     static async getById(id) {
         const response = await db.query(
             "SELECT * FROM complaints WHERE complaint_id = $1;",
