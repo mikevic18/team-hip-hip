@@ -15,6 +15,16 @@ async function register(req, res) {
         res.status(400).json({ error: err.message });
     }
 }
+async function getUserName(req, res) {
+    try{
+        const userID = req.params.id;
+        if(!userID) throw new Error("Invalid id");
+        const result = await User.getUserName(parseInt(userID));
+        res.status(200).send(result);
+    }catch(err){
+        res.status(400).json({ error: err.message });
+    }
+}
 
 async function login(req, res) {
     const data = req.body;
@@ -42,6 +52,16 @@ async function logout(req, res) {
         res.status(403).json({ error: err.message });
     }
 }
+async function getUserNameFromToken(req, res) {
+    const tokenId = req.params.id;
+    try {
+        const token = await Token.getOneByToken(tokenId);
+        if (!token) throw new Error("Invalid token.");
+        res.status(200).json(token);
+    } catch (err) {
+        res.status(403).json({ error: err.message });
+    }
+}
 async function deleteComplaint(req, res) {
     const data = req.body;
     try {
@@ -60,4 +80,7 @@ module.exports = {
     login,
     logout,
     deletePost: deleteComplaint,
+    getUserName,
+    getUserNameFromToken,
+
 };

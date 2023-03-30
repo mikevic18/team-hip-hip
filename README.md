@@ -1,8 +1,8 @@
-# Florinit
+# team-hip-hip# Florinit
 
 ## Description
 
-Florinit is a site is dedicated to providing information and resources for the residents of Florin, a beautiful English town with an old Castle and a country-wide famous Fish and Chips. The site is built using HTML, CSS and Javascript. The site relies on a database to store all the information and requests. 
+Florinit is a site is dedicated to providing information and resources for the residents of Florin, a beautiful English town with an old Castle and a country-wide famous Fish and Chips. The site is built using HTML, CSS and Javascript. The site relies on a database to store all the information and requests.
 
 Deployed Site:
 
@@ -48,6 +48,6 @@ On the donations page, residents can make their own listings for products and se
 
 ### Developers
 
-* Jojo
-* Rosie
-* Mihai
+-   Jojo
+-   Rosie
+-   Mihai

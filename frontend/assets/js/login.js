@@ -20,7 +20,8 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
-        window.location.assign("diary.html");
+        localStorage.setItem("isAdmin", true);
+        window.location.assign("http://localhost:5500/frontend/index.html");
     } else {
         alert(data.error);
     }
