@@ -10,8 +10,8 @@ complaintsRouter.get("/", complaintsController.index);
 complaintsRouter.get("/unapproved", complaintsController.indexUnapproved)
 // complaintsRouter.get("/top", complaintsController.getMostRecent);
 // complaintsRouter.get("/:id", complaintsController.show);
-complaintsRouter.post("/", complaintsController.create);
-complaintsRouter.patch("/:id", complaintsController.update);
-complaintsRouter.delete("/:id", complaintsController.destroy);
+complaintsRouter.post("/", authenticator, complaintsController.create);
+complaintsRouter.patch("/:id", authenticator, complaintsController.update);
+complaintsRouter.delete("/:id", authenticator, complaintsController.destroy);
 
 module.exports = complaintsRouter;
