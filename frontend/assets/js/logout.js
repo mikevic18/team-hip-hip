@@ -10,7 +10,7 @@ document.getElementById("log-out-button").addEventListener("click", async (e) =>
             token: localStorage.getItem("token"),
         })
     }
-
+    
     const response = await fetch("http://localhost:3000/users/logout", options);
     const data = await response.json();
 
