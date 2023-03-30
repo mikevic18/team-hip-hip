@@ -55,7 +55,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #3f4609 !important;
+    background-color: #323232 !important;
 }
 
 .footer-link {
@@ -331,13 +331,29 @@ label {
     float: right;
 }
 
-.login-link,
-.signup-link,
-.logout-link {
-    background-color: gray;
+.login,
+.signup,
+.logout {
+    background-color: #1c2024;
+    border: solid 1px #99a9bb;
     height: 1.5rem;
     width: 8rem;
     margin: 5px;
+}
+
+.login>a {
+    text-decoration: none;
+    color: white;
+}
+
+.signup>a {
+    text-decoration: none;
+    color: white;
+}
+
+.logout>a {
+    text-decoration: none;
+    color: white;
 }
 
 .accounts {
@@ -348,5 +364,5 @@ label {
 }
 
 .push {
-    margin-top: 2rem;
+    margin-top: 2rem !important;
 }
