@@ -331,9 +331,9 @@ label {
     float: right;
 }
 
-.login-link,
-.signup-link,
-.logout-link {
+.login-option,
+.signup-option,
+.logout-option {
     background-color: gray;
     height: 1.5rem;
     width: 8rem;
