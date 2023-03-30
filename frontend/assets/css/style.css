@@ -229,20 +229,68 @@ body {
     font-size: 32px;
 }
 
-fieldset > input,
-fieldset > textarea {
+fieldset>input,
+fieldset>textarea {
     width: 100%;
+}
+
+.login-prompt {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    font-size: 32px;
+}
+
+fieldset>input {
+    width: 100%;
+}
+
+label {
+    font-size: 26px;
+}
+
+.login-btn {
+    margin-top: 1vh !important;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 10%;
+}
+
+.signup-link {
+    margin-top: 1vh !important;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 10%;
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.login-link {
+    margin-top: 1vh !important;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 10%;
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .login-btn,
 .submit-btn {
     margin-top: 1vh !important;
     color: #000000;
-    font-size: 32px;
+    font-size: 16px;
     border-radius: 10%;
 }
 
 .login-btn:hover,
+.signup-link:hover,
 .submit-btn:hover {
     background-color: #f1f463 !important;
     color: #000000 !important;
@@ -265,6 +313,15 @@ fieldset > textarea {
     padding: 20px;
 }
 
+#register-form {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    width: 100%;
+}
 
 .accounts-block {
     background-color: gray;
@@ -274,7 +331,9 @@ fieldset > textarea {
     float: right;
 }
 
-.login-link, .signup-link, .logout-link {
+.login-link,
+.signup-link,
+.logout-link {
     background-color: gray;
     height: 1.5rem;
     width: 8rem;
