@@ -322,3 +322,31 @@ label {
     color: #f1f463;
     width: 100%;
 }
+
+.accounts-block {
+    background-color: gray;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    float: right;
+}
+
+.login-link,
+.signup-link,
+.logout-link {
+    background-color: gray;
+    height: 1.5rem;
+    width: 8rem;
+    margin: 5px;
+}
+
+.accounts {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+}
+
+.push {
+    margin-top: 2rem;
+}

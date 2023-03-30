@@ -5,6 +5,7 @@ document
 
         const form = new FormData(e.target);
 
+
         const options = {
             method: "POST",
             headers: {
@@ -18,6 +19,7 @@ document
                 category: "complaints",
             }),
         };
+
 
         const response = await fetch(
             "http://localhost:3000/complaints",
