@@ -13,4 +13,5 @@ complaintsRouter.get("/unapproved", complaintsController.indexUnapproved)
 complaintsRouter.post("/", authenticator, complaintsController.create);
 complaintsRouter.patch("/:id", authenticator, complaintsController.update);
 complaintsRouter.delete("/:id", authenticator, complaintsController.destroy);
+
 module.exports = complaintsRouter;
