@@ -10,7 +10,7 @@ class Complaint {
         update_date,
         category,
         is_approved,
-        admin_comment,
+        admin_comment        
     }) {
         this.complaint_id = complaint_id;
         this.user_id = user_id;
