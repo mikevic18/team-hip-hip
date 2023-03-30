@@ -168,6 +168,10 @@ body {
 
 .complaint-box {
     margin-top: 5rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa-tag {
@@ -365,4 +369,28 @@ label {
 
 .push {
     margin-top: 2rem !important;
+}
+
+#reply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
 }
