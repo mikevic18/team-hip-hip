@@ -267,7 +267,7 @@ fieldset > textarea {
 
 
 .accounts-block {
-    background-color: cyan;
+    background-color: gray;
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
@@ -282,14 +282,12 @@ fieldset > textarea {
 }
 
 .accounts {
-    border: 3px solid yellow;
     position: fixed;
     right: 0;
     top: 0;
     margin: 1rem;
 }
 
-.account-links {
+.push {
     margin-top: 2rem;
-    border: 2px solid pink;
 }
