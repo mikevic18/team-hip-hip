@@ -275,7 +275,7 @@ label {
     color: #000000;
     border: 2px solid #000000;
     border-radius: 10%;
-    background-color: #f1f463;
+    background-color: white;
     font-size: 20px;
     padding: 5px;
     text-decoration: none;
@@ -311,4 +311,14 @@ label {
 .popup-form {
     background-color: black;
     padding: 20px;
+}
+
+#register-form {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    width: 100%;
 }
