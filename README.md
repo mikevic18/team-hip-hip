@@ -48,6 +48,6 @@ On the donations page, residents can make their own listings for products and se
 
 ### Developers
 
-* Jojo
-* Rosie
-* Mihai
+-   Jojo
+-   Rosie
+-   Mihai

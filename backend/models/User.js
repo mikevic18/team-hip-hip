@@ -7,7 +7,16 @@ class User {
         this.password = password;
         this.admin = admin || false;
     }
-    
+    static async getUserName(id) {
+        const response = await db.query(
+            "SELECT username FROM user_account WHERE user_id = $1",
+            [id]
+        );
+        if (response.rows.length != 1) {
+            throw new Error("Unable to locate user.");
+        }
+        return new User(response.rows[0]);
+    }
     static async getOneById(id) {
         const response = await db.query(
             "SELECT * FROM user_account WHERE user_id = $1",
@@ -40,12 +49,12 @@ class User {
         const newUser = await User.getOneById(newId);
         return newUser;
     }
-    async destroy(){
+    async destroy() {
         const response = await db.query(
             "DELETE FROM user_account WHERE username = $1",
             [this.username]
         );
-        if (response.rowCount!= 1) throw new Error("Unable to locate token.");
+        if (response.rowCount != 1) throw new Error("Unable to locate token.");
         return response;
     }
 }

@@ -5,6 +5,7 @@ const postController = require('../controllers/posts')
 const postRouter = Router()
 
 postRouter.get("/", postController.index)
+postRouter.get("/complaint/:id", postController.getByComplaintID)
 postRouter.get("/category/:cat", postController.categoryIndex)
 postRouter.get("/recent", postController.indexByDate)
 postRouter.get("/recent/:category", postController.categoryIndexByDate)
