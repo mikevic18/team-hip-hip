@@ -1,5 +1,5 @@
-document.getElementById("log-out-button").addEventListener("click", async (e) => {
-    e.preventDefault();
+
+const logout = async () => {
     const options = {
         method: "POST",
         headers: {
@@ -16,8 +16,8 @@ document.getElementById("log-out-button").addEventListener("click", async (e) =>
 
     if (response.status == 200) {
         localStorage.removeItem("token");
-        window.location.assign("login.html");
+        window.location.assign("index.html");
     } else {
         alert(data.error);
     }
-})
+}
