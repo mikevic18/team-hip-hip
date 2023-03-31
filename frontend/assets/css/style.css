@@ -156,7 +156,11 @@ body {
 }
 
 .complaint-text {
-    color: #bec6d0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
     font-weight: 600;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
@@ -195,12 +199,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #99a9bb;
+    color: white;
     font-weight: 600;
     font-size: 16px;
     width: 100%;
     height: 100%;
-    border: solid 1px #352456;
+    border: solid 1px black;
     background-color: #323232;
 }
 
@@ -339,27 +343,30 @@ label {
 .signup-option,
 .logout-option {
     background-color: gray;
+    cursor: pointer;
     height: 1.5rem;
+    padding: 10px;
     width: 8rem;
     margin: 5px;
 }
 
-.login>a {
+.login-option>a {
     text-decoration: none;
     color: white;
 }
 
-.signup>a {
+.signup-option>a {
     text-decoration: none;
     color: white;
 }
 
-.logout>a {
+.logout-option>a {
     text-decoration: none;
     color: white;
 }
 
 .accounts {
+    cursor: pointer;
     position: fixed;
     right: 0;
     top: 0;
