@@ -11,9 +11,36 @@ function closeNav() {
 const plusButton = document.querySelector(".plus-button");
 const popupForm = document.getElementById("new-post-container");
 
-plusButton.addEventListener("click", () => {
-    popupForm.style.display = "flex";
-});
-popupForm.addEventListener("click", (event) => {
-    if (event.target === popupForm) popupForm.style.display = "none";
-});
+// plusButton.addEventListener("click", () => {
+//     popupForm.style.display = "flex";
+// });
+// popupForm.addEventListener("click", (event) => {
+//     if (event.target === popupForm) popupForm.style.display = "none";
+// });
+
+const accountsBtn = document.querySelector(".accounts-block")
+const accountLinks = document.querySelector(".account-links")
+
+const loginBtn = document.querySelector(".login-option")
+const signupBtn = document.querySelector(".signup-option")
+const logoutBtn = document.querySelector(".logout-option")
+
+accountsBtn.addEventListener("click", () => {
+    accountLinks.style.display = "unset"
+    if (localStorage.getItem("token")) {
+        logoutBtn.style.display = "unset"
+        loginBtn.style.display = "none"
+        signupBtn.style.display = "none"
+    } else {
+        loginBtn.style.display = "unset"
+        signupBtn.style.display = "unset"
+        logoutBtn.style.display = "none"
+    }
+})
+
+document.querySelector(".container").addEventListener("click", () => {
+    accountLinks.style.display = "none"
+    logoutBtn.style.display = "none"
+    loginBtn.style.display = "none"
+    signupBtn.style.display = "none"
+})

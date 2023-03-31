@@ -26,15 +26,6 @@
                 <li id="footer-text">
                     <p>[hip, hip]</p>
                 </li>
-                <li class="footer-credit">
-                    <a class="footer-link" href="https://github.com/BritishBambi" target="_blank"><i class="fa-brands fa-github"></i>- Jojo</a>
-                </li>
-                <li class="footer-credit">
-                    <a class="footer-link" href="https://github.com/rjj21" target="_blank"><i class="fa-brands fa-github"></i>- Rosie</a>
-                </li>
-                <li class="footer-credit">
-                    <a class="footer-link" href="https://github.com/mikevic18" target="_blank"><i class="fa-brands fa-github"></i>- Mihai</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -42,6 +33,14 @@
         <div class="top-bar">
             <div class="header-box text-center text-white">
                 <h1 class="fs-4 header-text">Florinit</h1>
+                <div class="accounts">
+                    <div class="accounts-block"></div>
+                    <div class="account-links" style="display:none">
+                        <div class="login-link"><a href="accounts/login.html">Login</a></div>
+                        <div class="signup-link"><a href="accounts/register.html">Sign Up</a></div>
+                        <div class="logout-link"><a href="accounts/logout.html">Log Out</a></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -50,36 +49,51 @@
                     <h1 class="text-center site-title">Donations</h1>
                 </div>
             </div>
-            <div class="row top-donations">
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card h-100 border-black">
-                        <img class="card-img-top img-fluid" src="https://cdn.vox-cdn.com/thumbor/HQ7sdcRWe5K0k1Yc0UfxV4Uxfx4=/0x0:2000x1284/1200x800/filters:focal(840x482:1160x802)/cdn.vox-cdn.com/uploads/chorus_image/image/55666033/pizza_shoe12.0.jpg" alt="">
-                        <!-- Product Name -->
-                        <div class="card-body pb-0">
-                            <p class="mb-0">Pizza Shoes</p>
-                        </div>
-                        <div class="card-footer bg-white pt-0 border-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <!-- Short preview of product information -->
-                                    <p class="lead mb-0 text-left font-weight-bold">£5</p>
-                                    <p class="small mt-1 mb-0">
-                                        <i class="fas fa-tag"></i>Clothing
-                                    </p>
-                                    <!-- If the user is an admin they can edit or delete from the card -->
-                                    <small class="ml-3">
-                                        <a class="btn btn-info" href="#">Edit</a>
-                                        <a class="btn btn-danger" href="#">Delete</a>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div id="content-container" class="row top-donations">
+            </div>
+            <button class="plus-button btn btn-primary">New Listing</button>
+            <div id="new-post-container" class="popup-form-container">
+                <div class="popup-form">
+                    <form id="new-main-post-form">
+                        <fieldset>
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" />
+                        </fieldset>
+                        <fieldset>
+                            <label for="content">Content:</label>
+                            <textarea
+                                id="content"
+                                name="content"
+                                rows="3"
+                                cols="30"
+                            ></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <label for="content">Image Link:</label>
+                            <textarea
+                                id="img_url"
+                                name="img_url"
+                                rows="3"
+                                cols="30"
+                            ></textarea>
+                        </fieldset>
+                        <fieldset>
+                            <label for="content">Price: </label>
+                            <textarea
+                                id="price"
+                                name="price"
+                                rows="1"
+                                cols="1"
+                            ></textarea>
+                        </fieldset>
+                        <input class="submit-btn" type="submit" value="Submit" />
+                    </form>
                 </div>
             </div>
         </div>
     </div>
     <script src="/frontend/assets/js/navScript.js"></script>
+    <script src="/frontend/assets/js/donations.js"></script>
 </body>
 
 </html>

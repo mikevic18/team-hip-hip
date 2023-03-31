@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const authenticator = require("../middleware/authenticator");
 
 const postController = require('../controllers/posts')
 
@@ -12,8 +13,8 @@ postRouter.get("/recent/:category", postController.categoryIndexByDate)
 postRouter.get("/popular", postController.indexByVotes)
 postRouter.get("/popular/:category", postController.categoryIndexByVotes)
 postRouter.get("/:id", postController.show)
-postRouter.post("/", postController.create)
-postRouter.patch("/:id", postController.update)
-postRouter.delete("/:id", postController.destroy)
+postRouter.post("/", authenticator, postController.create)
+postRouter.patch("/:id", authenticator,  postController.update)
+postRouter.delete("/:id", authenticator,postController.destroy)
 
 module.exports = postRouter
