@@ -55,7 +55,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #3f4609 !important;
+    background-color: #323232 !important;
 }
 
 .footer-link {
@@ -168,6 +168,10 @@ body {
 
 .complaint-box {
     margin-top: 5rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa-tag {
@@ -229,20 +233,68 @@ body {
     font-size: 32px;
 }
 
-fieldset > input,
-fieldset > textarea {
+fieldset>input,
+fieldset>textarea {
     width: 100%;
+}
+
+.login-prompt {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    font-size: 32px;
+}
+
+fieldset>input {
+    width: 100%;
+}
+
+label {
+    font-size: 26px;
+}
+
+.login-btn {
+    margin-top: 1vh !important;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 10%;
+}
+
+.signup-link {
+    margin-top: 1vh !important;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 10%;
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.login-link {
+    margin-top: 1vh !important;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 10%;
+    background-color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .login-btn,
 .submit-btn {
     margin-top: 1vh !important;
     color: #000000;
-    font-size: 32px;
+    font-size: 16px;
     border-radius: 10%;
 }
 
 .login-btn:hover,
+.signup-link:hover,
 .submit-btn:hover {
     background-color: #f1f463 !important;
     color: #000000 !important;
@@ -263,4 +315,81 @@ fieldset > textarea {
 .popup-form {
     background-color: black;
     padding: 20px;
+}
+
+#register-form {
+    margin-top: 5vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f1f463;
+    width: 100%;
+}
+
+.accounts-block {
+    background-color: gray;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    float: right;
+}
+
+.login-option,
+.signup-option,
+.logout-option {
+    background-color: gray;
+    height: 1.5rem;
+    width: 8rem;
+    margin: 5px;
+}
+
+.login>a {
+    text-decoration: none;
+    color: white;
+}
+
+.signup>a {
+    text-decoration: none;
+    color: white;
+}
+
+.logout>a {
+    text-decoration: none;
+    color: white;
+}
+
+.accounts {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 1rem;
+}
+
+.push {
+    margin-top: 2rem !important;
+}
+
+#reply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
 }

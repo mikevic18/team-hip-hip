@@ -5,8 +5,8 @@ const complaintRouter = require('./routers/complaints');
 const userRouter = require('./routers/user');
 const postsRouter = require('./routers/posts');
 // const informationRouter = require('./routers/information');
-// const listingRouter = require('./routers/listing');
-// const skillRouter = require('./routers/skills');
+const listingRouter = require('./routers/listing');
+const skillRouter = require('./routers/skills');
 
 
 
@@ -19,5 +19,8 @@ api.use('/post', postsRouter);
 api.use('/complaints', complaintRouter);
 api.use('/users', userRouter);
 api.use('/posts', postsRouter);
+api.use('/skills', skillRouter);
+api.use('/tip', skillRouter);
+api.use('/listings', listingRouter);
 module.exports = api;
 

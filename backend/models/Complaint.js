@@ -79,7 +79,7 @@ class Complaint {
     }
 
     static async getAll() {
-        const response = await db.query("SELECT * FROM complaints;");
+        const response = await db.query("SELECT * FROM complaints WHERE is_approved = true;");
         if (response.rows.length == 0)
             throw new Error("No complaints have been found.");
         return response.rows.map((c) => new Complaint(c));
