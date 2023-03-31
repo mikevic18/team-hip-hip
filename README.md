@@ -10,13 +10,33 @@ Deployed Site:
 
 ### User Stories
 
+The Project was managed using Trello. The Trello board can be viewed HERE. The Trello board was used to create user stories and to track the progress of the project. The user stories were created to help guide the development of the apps key features. These user stories were related to some of the initial quotes from the brief:
+
+"”The local recycling centre is overflowing with stuff that can still be reused, Why do people do this? I'm pretty confused."
+
+- This inspired the creation of the donations page. This page allows residents to post items they want to give away. This is a great way to reduce waste and to help the community.
+
+"There is much skill in the local community. Knowledge and crafts have been handed down, generation to generation, but now much of this knowledge is not being shared as regularly, and, as a result, is in danger of being forgotten."
+
+- This inspired the creation of the tips page. This page allows residents to share their tips and tricks. This is a great way to share knowledge that is important.
+
+"Florin is surrounded by swathes of beautiful countryside, where many great and legendary historical events have taken place. Unfortunately, much of this is becoming increasingly destitute and our local landscape is becoming unrecognizable."
+
+- This inspired the creation of the information page. This page contains information about the history of Florin, as well as information about local attractions. The donations page also helps to combat the issues of the landscape.
+
 ### Wireframes and Design
+
+Wireframes were created to help guide the development of the app. An initial set of sketches was made using Excalidraw. These were used to jot down initial ideas and channel them into the shape of an app.
+
+[![Florinit Wireframes](./screenshots/wireframes.PNG)](Wireframes)
 
 ### Database Design
 
 ## Features
 
 ### Landing Page
+
+When you first visit the site, you will be greeted by the landing page. This page contains a brief description of the site and a link to the different pages on the site. The landing page is very static and is simply a navigation tool for users when they first log in.
 
 ### Information Page
 
