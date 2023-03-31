@@ -104,6 +104,12 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+.category-desc {
+    color: #f1f463;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+}
+
 .home-img {
     width: 100%;
     height: 15rem;
@@ -367,7 +373,7 @@ label {
 
 .accounts {
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
     margin: 1rem;
