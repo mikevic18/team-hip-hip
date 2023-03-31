@@ -28,7 +28,9 @@ The Project was managed using Trello. The Trello board can be viewed HERE. The T
 
 Wireframes were created to help guide the development of the app. An initial set of sketches was made using Excalidraw. These were used to jot down initial ideas and channel them into the shape of an app.
 
-[![Florinit Wireframes](./screenshots/wireframes.PNG)](Wireframes)
+![Florinit Wireframes](./screenshots/wireframes.PNG)
+
+One of the key areas that went through a lot of changes was the colour scheme and overall layout of the site. The initial design was very bright and in your face. It relied on a very strong purple colours which were very hard to balance out with other colours on the site. After some feedback, we decided to go with a more minimalistic design. This was done to help the site feel more professional and to help the content stand out.
 
 ### Database Design
 
