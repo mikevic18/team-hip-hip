@@ -335,11 +335,10 @@ label {
     float: right;
 }
 
-.login,
-.signup,
-.logout {
-    background-color: #1c2024;
-    border: solid 1px #99a9bb;
+.login-option,
+.signup-option,
+.logout-option {
+    background-color: gray;
     height: 1.5rem;
     width: 8rem;
     margin: 5px;
