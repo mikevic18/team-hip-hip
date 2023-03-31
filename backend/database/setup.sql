@@ -38,6 +38,7 @@ CREATE TABLE posts (
     update_date timestamp,
     category VARCHAR(30),
     complaint_id INT,
+    is_approved BOOLEAN,
     PRIMARY KEY(post_id),
     FOREIGN KEY(user_id) REFERENCES user_account("user_id"),
     FOREIGN KEY(complaint_id) REFERENCES complaints("complaint_id")
@@ -46,7 +47,8 @@ CREATE TABLE posts (
 CREATE TABLE listings (
     image_url VARCHAR(255),
     price FLOAT NOT NULL,
-    sold BOOLEAN DEFAULT FALSE
+    sold BOOLEAN DEFAULT FALSE,
+    contact VARCHAR(255)
 ) INHERITS (posts);
 
 CREATE TABLE information (
