@@ -11,13 +11,6 @@ function closeNav() {
 const plusButton = document.querySelector(".plus-button");
 const popupForm = document.getElementById("new-post-container");
 
-// plusButton.addEventListener("click", () => {
-//     popupForm.style.display = "flex";
-// });
-// popupForm.addEventListener("click", (event) => {
-//     if (event.target === popupForm) popupForm.style.display = "none";
-// });
-
 const accountsBtn = document.querySelector(".accounts-block")
 const accountLinks = document.querySelector(".account-links")
 
@@ -44,3 +37,16 @@ document.querySelector(".container").addEventListener("click", () => {
     loginBtn.style.display = "none"
     signupBtn.style.display = "none"
 })
+
+try {
+    plusButton.addEventListener("click", () => {
+        popupForm.style.display = "flex";
+    });
+    popupForm.addEventListener("click", (event) => {
+        if (event.target === popupForm) popupForm.style.display = "none";
+    });
+
+} catch(err) {
+    console.log(err)
+}
+

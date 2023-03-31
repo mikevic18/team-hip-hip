@@ -16,6 +16,7 @@ const logout = async () => {
 
     if (response.status == 200) {
         localStorage.removeItem("token");
+        localStorage.removeItem("isAdmin");
         window.location.assign("index.html");
     } else {
         alert(data.error);
