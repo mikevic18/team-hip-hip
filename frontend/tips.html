@@ -24,32 +24,35 @@
             crossorigin="anonymous"
         ></script>
     </head>
-
-    <body>
-        <div class="main-container d-flex">
-            <span
-                id="open-nav"
-                style="background-color: #14181c"
-                onclick="openNav()"
-                >&#9776;</span
-            >
-            <div class="sidebar" id="sidebar">
-                <ul class="nav flex-column text-white">
-                    <a
-                        href="javascript:void(0)"
-                        class="closebtn"
-                        onclick="closeNav()"
-                        >&times;</a
-                    >
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="complaints.html">Complaints</a></li>
-                    <li><a href="tips.html" class="active-page">Tips</a></li>
-                    <li><a href="donations.html">Donations</a></li>
-                    <li><a href="information.html">Information</a></li>
-                    <li id="footer-text">
-                        <p>[hip, hip]</p>
-                    </li>
-                </ul>
+<body>
+    <div class="main-container d-flex">
+        <span id="open-nav" style="background-color: #14181c;" onclick="openNav()">&#9776;</span>
+        <div class="sidebar" id="sidebar">
+            <ul class="nav flex-column text-white">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="complaints.html">Complaints</a></li>
+                <li><a href="tips.html" class="active-page">Tips</a></li>
+                <li><a href="donations.html">Donations</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li id="footer-text">
+                    <p>[hip, hip]</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="page-content" class="page-content">
+        <div class="top-bar">
+            <div class="header-box text-center text-white">
+                <h1 class="fs-4 header-text">Florinit</h1>
+                <div class="accounts">
+                    <div class="accounts-block"></div>
+                    <div class="account-links" style="display:none">
+                        <div class="login-link"><a href="accounts/login.html">Login</a></div>
+                        <div class="signup-link"><a href="accounts/register.html">Sign Up</a></div>
+                        <div class="logout-link"><a href="accounts/logout.html">Log Out</a></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="page-content" class="page-content">

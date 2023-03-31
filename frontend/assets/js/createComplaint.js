@@ -1,9 +1,10 @@
 document
     .getElementById("new-main-post-form")
-    .addEventListener("submit", async (e) => {
+    .addEventListener("submit", async(e) => {
         e.preventDefault();
 
         const form = new FormData(e.target);
+
 
         const options = {
             method: "POST",
@@ -18,6 +19,7 @@ document
                 category: "complaints",
             }),
         };
+
 
         const response = await fetch(
             "http://localhost:3000/complaints",

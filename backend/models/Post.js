@@ -32,8 +32,7 @@ class Post {
         const response = await db.query(
             "SELECT * FROM posts ORDER BY update_date DESC;"
         );
-        if (response.rows.length < 1)
-            throw new Error("Unable to locate posts.");
+        if (response.rows.length < 1) throw new Error("Unable to locate posts.");
         return response.rows.map((p) => new Post(p));
     }
 
@@ -69,7 +68,7 @@ class Post {
         if (response.rows.length < 1)
             throw new Error(`Unable to locate ${category}.`);
         return response.rows.map((p) => new Post(p));
-    }
+        }
 
     static async getOneById(id) {
         const response = await db.query(
