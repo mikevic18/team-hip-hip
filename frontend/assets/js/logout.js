@@ -16,6 +16,7 @@ document.getElementById("log-out-button").addEventListener("click", async (e) =>
 
     if (response.status == 200) {
         localStorage.removeItem("token");
+        localStorage.removeItem("isAdmin");
         window.location.assign("login.html");
     } else {
         alert(data.error);
