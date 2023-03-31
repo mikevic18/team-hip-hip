@@ -29,14 +29,13 @@ async function deletePost(event) {
     if (response.status != 200) {
         console.log("Error:" + response);
         alert(
-            "An error occurred: " +
-                [
-                    response.status == 404
-                        ? "not authorized"
-                        : response.statusText,
-                ] +
-                "\n" +
-                " Please try again later!"
+            "An error occurred: " + [
+                response.status == 404 ?
+                "not authorized" :
+                response.statusText,
+            ] +
+            "\n" +
+            " Please try again later!"
         );
     } else {
         alert("Post has been deleted");
@@ -190,7 +189,7 @@ async function createDonationElement(complaint, admin) {
     const nameParagraph = document.createElement("p");
     const getUserName = await fetchUsername(complaint.user_id);
     nameParagraph.innerHTML = getUserName.username;
-    
+
     const secondDiv = document.createElement("div");
     secondDiv.classList.add("col-8", "complaint-text");
 
@@ -239,7 +238,7 @@ async function createAdminButtons() {
     adminButton.innerHTML = "Unapproved";
     adminButton.setAttribute("id", "unApproved");
     adminButton.setAttribute("onclick", "displayUnApproved()");
-    adminButton.setAttribute("class","btn btn-primary");
+    adminButton.setAttribute("class", "btn btn-primary");
     mainContainer.appendChild(adminButton);
 }
 async function displayUnApproved() {
@@ -249,7 +248,7 @@ async function displayUnApproved() {
     adminButton.innerHTML = "Approved";
     adminButton.setAttribute("id", "approvedPosts");
     adminButton.setAttribute("onclick", "displayApproved()");
-    adminButton.setAttribute("class","btn btn-primary");
+    adminButton.setAttribute("class", "btn btn-primary");
     mainContainer.appendChild(adminButton);
     renderDonations(true);
 }
@@ -264,7 +263,7 @@ async function createApprovalDenialButtons(masterDiv) {
     const approveButton = document.createElement("button");
     approveButton.setAttribute("onclick", "approvePost(event)");
     approveButton.setAttribute("id", "edit");
-    approveButton.setAttribute("class","btn btn-green")
+    approveButton.setAttribute("class", "btn btn-success")
     approveButton.textContent = "Approve";
 
     const denyButton = document.createElement("button");
@@ -283,8 +282,7 @@ async function approvePost(event) {
     const divId = div.id;
     const elementType = divId.split("-");
     let response = await fetch(
-        `http://localhost:3000/${elementType[0]}/approve/${elementType[1]}`,
-        {
+        `http://localhost:3000/${elementType[0]}/approve/${elementType[1]}`, {
             method: "POST",
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -300,7 +298,8 @@ async function approvePost(event) {
 
 function createEditDeleteButtons(post, masterDiv) {
     if (post.user_id != currentUser) return;
-
+    const div = document.createElement("div")
+    div.setAttribute("id", `post-${post.id}`);
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("onclick", "deletePost(event)");
     deleteButton.setAttribute("id", "delete");
@@ -325,6 +324,7 @@ async function createReplyButton(masterDiv) {
     replyButton.textContent = "Reply";
     masterDiv.appendChild(replyButton);
 }
+
 function createVoteButtons(masterDiv) {
     if (!currentUser) return;
     const thumbsUpButton = document.createElement("button");
@@ -345,8 +345,7 @@ async function sendUpVote(event) {
     const divId = div.id;
     const elementType = divId.split("-");
     let response = await fetch(
-        `http://localhost:3000/${elementType[0]}/${elementType[0]}`,
-        {
+        `http://localhost:3000/${elementType[0]}/${elementType[0]}`, {
             method: "POST",
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -360,8 +359,7 @@ async function sendDownVote(event) {
     const divId = div.id;
     const elementType = divId.split("-");
     let response = await fetch(
-        `http://localhost:3000/${elementType[0]}/${elementType[0]}`,
-        {
+        `http://localhost:3000/${elementType[0]}/${elementType[0]}`, {
             method: "POST",
             headers: {
                 Authorization: localStorage.getItem("token"),
@@ -383,13 +381,13 @@ async function renderDonations(adminFuncs) {
     const complaintPosts = await fetchDonations(options, adminFuncs);
     if (!complaintPosts) return;
     const mainContainer = document.getElementById("content-container");
-    complaintPosts.forEach(async (complaint) => {
+    complaintPosts.forEach(async(complaint) => {
         let superDiv = await createDonationElement(complaint, adminFuncs);
         let postsOnTarget = await fetchPostData(complaint.complaint_id);
         if (adminFuncs) {
             await createApprovalDenialButtons(superDiv);
         }
-        postsOnTarget?.forEach(async (post) => {
+        postsOnTarget ?.forEach(async(post) => {
             let element = await createPostElement(post);
             superDiv.appendChild(element);
         });
