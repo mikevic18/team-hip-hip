@@ -55,7 +55,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #3f4609 !important;
+    background-color: #323232 !important;
 }
 
 .footer-link {
@@ -168,6 +168,10 @@ body {
 
 .complaint-box {
     margin-top: 5rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa-tag {
@@ -340,6 +344,21 @@ label {
     margin: 5px;
 }
 
+.login>a {
+    text-decoration: none;
+    color: white;
+}
+
+.signup>a {
+    text-decoration: none;
+    color: white;
+}
+
+.logout>a {
+    text-decoration: none;
+    color: white;
+}
+
 .accounts {
     position: fixed;
     right: 0;
@@ -348,5 +367,29 @@ label {
 }
 
 .push {
-    margin-top: 2rem;
+    margin-top: 2rem !important;
+}
+
+#reply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
+}
+
+#delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    margin: 5px;
 }
