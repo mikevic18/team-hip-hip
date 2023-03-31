@@ -104,6 +104,11 @@ body {
     font-family: "Lato", sans-serif;
 }
 
+#new-main-post-form {
+    background-color: #14181c;
+    color: white;
+}
+
 .category-desc {
     color: #f1f463;
     font-family: "Lato", sans-serif;
