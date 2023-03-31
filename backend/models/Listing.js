@@ -3,7 +3,7 @@ class Listing {
     constructor({
         item_id,
         title,
-        description,
+        content,
         image_url,
         price,
         sold,
@@ -13,7 +13,7 @@ class Listing {
     }) {
         this.id = item_id;
         this.title = title;
-        this.content = description;
+        this.content = content;
         this.price = price;
         this.sold = sold;
         this.image_url = image_url;
