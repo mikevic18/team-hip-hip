@@ -1,5 +1,4 @@
-
-const logout = async () => {
+const logout = async() => {
     const options = {
         method: "POST",
         headers: {
@@ -10,7 +9,7 @@ const logout = async () => {
             token: localStorage.getItem("token"),
         })
     }
-    
+
     const response = await fetch("http://localhost:3000/users/logout", options);
     const data = await response.json();
 

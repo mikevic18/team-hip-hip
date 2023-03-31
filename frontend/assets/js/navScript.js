@@ -11,6 +11,7 @@ function closeNav() {
 const plusButton = document.querySelector(".plus-button");
 const popupForm = document.getElementById("new-post-container");
 
+
 const accountsBtn = document.querySelector(".accounts-block")
 const accountLinks = document.querySelector(".account-links")
 
@@ -38,15 +39,9 @@ document.querySelector(".container").addEventListener("click", () => {
     signupBtn.style.display = "none"
 })
 
-try {
-    plusButton.addEventListener("click", () => {
-        popupForm.style.display = "flex";
-    });
-    popupForm.addEventListener("click", (event) => {
-        if (event.target === popupForm) popupForm.style.display = "none";
-    });
-
-} catch(err) {
-    console.log(err)
-}
-
+plusButton.addEventListener("click", () => {
+    popupForm.style.display = "flex";
+});
+popupForm.addEventListener("click", (event) => {
+    if (event.target === popupForm) popupForm.style.display = "none";
+});
