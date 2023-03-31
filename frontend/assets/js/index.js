@@ -298,7 +298,8 @@ async function approvePost(event) {
 
 function createEditDeleteButtons(post, masterDiv) {
     if (post.user_id != currentUser) return;
-
+    const div = document.createElement("div")
+    div.setAttribute("id", `post-${post.id}`);
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("onclick", "deletePost(event)");
     deleteButton.setAttribute("id", "delete");

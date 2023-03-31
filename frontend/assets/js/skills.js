@@ -207,10 +207,9 @@ document
         
         secondDiv.appendChild(tipText);
         secondDiv.setAttribute("id", `tip-${tip.id}`);
-        
         mainDiv.appendChild(secondDiv);
 
-        if (!admin) createEditDeleteButtons(tip, mainDiv);
+        if (!admin) createEditDeleteButtons(tip, secondDiv);
         createVoteButtons(secondDiv,tip)
         return mainDiv;
     }
@@ -292,8 +291,8 @@ document
         editButton.setAttribute("id", "edit");
         editButton.textContent = "Edit";
     
-        masterDiv.appendChild(editButton);
         masterDiv.appendChild(deleteButton);
+        deleteButton.setAttribute("class","btn btn-primary");
     }
     function createVoteButtons(masterDiv,tip) {
         if (!currentUser) return;
@@ -307,9 +306,6 @@ document
         thumbsDownButton.setAttribute("onclick", "sendDownVote(event)");
         thumbsDownButton.setAttribute("id", "downVoteButton");
         thumbsDownButton.setAttribute("class", "btn btn-primary fas fa-thumbs-down");
-        masterDiv.appendChild(thumbsUpButton);
-        masterDiv.appendChild(numberOfVotes)
-        masterDiv.appendChild(thumbsDownButton);
     }
     async function sendUpVote(event) {
         const div = event.target.parentNode;
