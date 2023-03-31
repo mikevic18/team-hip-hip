@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "setup-db": "node ./database/setup.js",
+    "coverage": "jest --coverage",
     "test": "jest --watchAll test"
   },
   "keywords": [],

@@ -205,7 +205,7 @@ document
         <div class="row">
             <div class="col">
                 <p class="lead mb-0 text-left font-weight-bold">£ ${donation.price}</p>
-                <p class="lead mb-0 text-left font-weight-bold">Contact: ${donation.contact}</p>
+                <p class="lead mb-0 text-left font-weight-bold">Contact Details: ${donation.content}</p>
                 <small class="ml-3">
                     <a class="btn btn-info" href="#">Edit</a>
                     <a class="btn btn-danger" href="#">Delete</a>

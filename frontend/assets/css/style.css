@@ -121,6 +121,14 @@ body {
     border-radius: 10px;
 }
 
+#submit{
+    width: 30%;
+}
+
+#reply-content-field{
+    width: 30%;
+}
+
 .site-1 {
     margin-top: 10vh !important;
     display: flex;
